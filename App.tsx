@@ -34,6 +34,9 @@ import InvoicePage from './pages/InvoicePage';
 import { ShoppingBagIcon, FacebookIcon, InstagramIcon, TwitterIcon, LinkedInIcon } from './components/Icons';
 import { useEffect, useState } from 'react';
 import { supabase } from './utils/supabase';
+import ErrorBoundary from './components/ErrorBoundary';
+import LoadingSpinner from './components/LoadingSpinner';
+import './styles/globals.css';
 
 
 const Footer: React.FC = () => (
@@ -113,12 +116,13 @@ function App() {
   }, []);
 
   return (
-    <AuthProvider>
-      <CartProvider>
-        <HashRouter>
-          <div className="flex flex-col min-h-screen font-sans text-slate-800 dark:text-slate-200">
-            <Navbar />
-            <main className="flex-grow container mx-auto p-4 md:p-6 lg:p-8">
+    <ErrorBoundary>
+      <AuthProvider>
+        <CartProvider>
+          <HashRouter>
+            <div className="flex flex-col min-h-screen font-sans text-slate-800 dark:text-slate-200">
+              <Navbar />
+              <main className="flex-grow container-responsive py-4 sm:py-6 lg:py-8">
               <Routes>
                 {/* Public Routes */}
                 <Route path="/" element={<HomePage />} />
@@ -251,8 +255,9 @@ function App() {
             <Footer />
           </div>
         </HashRouter>
-      </CartProvider>
-    </AuthProvider>
+        </CartProvider>
+      </AuthProvider>
+    </ErrorBoundary>
   );
 }
 
