@@ -1,0 +1,10 @@
+
+[
+  { "category": "Music", "rate": 0.18 },
+  { "category": "Electronics", "rate": 0.18 },
+  { "category": "Furniture", "rate": 0.18 },
+  { "category": "Sports", "rate": 0.12 },
+  { "category": "Home Goods", "rate": 0.18 },
+  { "category": "Accessories", "rate": 0.12 },
+  { "category": "Default", "rate": 0.18 }
+]

@@ -1,0 +1,9 @@
+
+[
+    { "name": "Music", "imageUrl": "https://picsum.photos/seed/cat-music/800/600", "status": "APPROVED" },
+    { "name": "Electronics", "imageUrl": "https://picsum.photos/seed/cat-electronics/800/600", "status": "APPROVED" },
+    { "name": "Furniture", "imageUrl": "https://picsum.photos/seed/cat-furniture/800/600", "status": "APPROVED" },
+    { "name": "Sports", "imageUrl": "https://picsum.photos/seed/cat-sports/800/600", "status": "APPROVED" },
+    { "name": "Home Goods", "imageUrl": "https://picsum.photos/seed/cat-home/800/600", "status": "APPROVED" },
+    { "name": "Accessories", "imageUrl": "https://picsum.photos/seed/cat-accessories/800/600", "status": "APPROVED" }
+]

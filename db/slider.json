@@ -1,0 +1,27 @@
+
+[
+  {
+    "id": "slide_1",
+    "imageUrl": "https://picsum.photos/seed/slide1/1200/600",
+    "title": "Unleash Your Sound",
+    "subtitle": "Discover our latest collection of musical instruments.",
+    "link": "/",
+    "status": "APPROVED"
+  },
+  {
+    "id": "slide_2",
+    "imageUrl": "https://picsum.photos/seed/slide2/1200/600",
+    "title": "Tech That Inspires",
+    "subtitle": "Get the best deals on cutting-edge electronics.",
+    "link": "/",
+    "status": "APPROVED"
+  },
+  {
+    "id": "slide_3",
+    "imageUrl": "https://picsum.photos/seed/slide3/1200/600",
+    "title": "Style Your Space",
+    "subtitle": "Modern furniture for a modern home.",
+    "link": "/",
+    "status": "APPROVED"
+  }
+]

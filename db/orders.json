@@ -1,0 +1,65 @@
+
+[
+    {
+        "id": "ord_1",
+        "userId": "usr_customer",
+        "date": "2024-05-20T10:30:00Z",
+        "status": "Delivered",
+        "total": 43098,
+        "shippingAddress": { "id": "addr_1", "street": "123 Main St", "city": "Anytown", "state": "CA", "zip": "12345", "country": "USA", "isDefault": true },
+        "items": [
+            { "productId": "prod_7", "name": "Smartwatch Series 8", "price": 33099, "quantity": 1, "imageUrl": "https://picsum.photos/seed/smartwatch/600/400" },
+            { "productId": "prod_9", "name": "Running Shoes", "price": 9999, "quantity": 1, "imageUrl": "https://picsum.photos/seed/shoes/600/400" }
+        ],
+        "deliveryInfo": {
+            "deliveryPersonName": "David Chen",
+            "phone": "555-123-4567",
+            "vehicleNumber": "CA-DLR-001"
+        }
+    },
+    {
+        "id": "ord_2",
+        "userId": "usr_customer",
+        "date": "2024-06-15T14:00:00Z",
+        "status": "Shipped",
+        "total": 14999,
+        "shippingAddress": { "id": "addr_2", "street": "456 Oak Ave", "city": "Someville", "state": "NY", "zip": "67890", "country": "USA" },
+        "items": [
+            { "productId": "prod_6", "name": "Leather Backpack", "price": 14999, "quantity": 1, "imageUrl": "https://picsum.photos/seed/backpack/600/400" }
+        ],
+        "deliveryInfo": {
+            "deliveryPersonName": "Maria Garcia",
+            "phone": "555-987-6543",
+            "vehicleNumber": "NY-SHIP-007"
+        }
+    },
+     {
+        "id": "ord_3_trial",
+        "userId": "usr_customer",
+        "date": "2024-05-10T11:00:00Z",
+        "status": "Returned",
+        "total": 0,
+        "shippingAddress": { "id": "addr_1", "street": "123 Main St", "city": "Anytown", "state": "CA", "zip": "12345", "country": "USA", "isDefault": true },
+        "isTrialOrder": true,
+        "items": [
+            { "productId": "prod_1", "name": "Acoustic Guitar", "price": 24899, "quantity": 1, "imageUrl": "https://picsum.photos/seed/guitar/600/400" }
+        ]
+    },
+     {
+        "id": "ord_4_trial",
+        "userId": "usr_customer",
+        "date": "2024-06-01T09:00:00Z",
+        "status": "Delivered",
+        "total": 0,
+        "shippingAddress": { "id": "addr_1", "street": "123 Main St", "city": "Anytown", "state": "CA", "zip": "12345", "country": "USA", "isDefault": true },
+        "isTrialOrder": true,
+        "items": [
+             { "productId": "prod_3", "name": "Modern Bookshelf", "price": 18299, "quantity": 1, "imageUrl": "https://picsum.photos/seed/bookshelf/600/400" }
+        ],
+        "deliveryInfo": {
+            "deliveryPersonName": "Frank Miller",
+            "phone": "555-555-5555",
+            "vehicleNumber": "CA-TRIAL-88"
+        }
+    }
+]

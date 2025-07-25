@@ -1,0 +1,46 @@
+
+[
+  { "id": "usr_admin", "name": "Admin User", "email": "admin@chromacart.com", "role": "ADMIN", "avatar": "https://i.pravatar.cc/150?u=admin", "password": "adminpassword" },
+  { "id": "usr_seller", "name": "Pro Seller", "email": "seller@chromacart.com", "role": "SELLER", "avatar": "https://i.pravatar.cc/150?u=seller", "password": "sellerpassword" },
+  { 
+    "id": "usr_pending_seller", 
+    "name": "Wannabe Seller", 
+    "email": "pending@chromacart.com", 
+    "role": "PENDING_SELLER", 
+    "avatar": "https://i.pravatar.cc/150?u=pending",
+    "sellerInfo": {
+      "companyName": "Creative Crafts Co.",
+      "gstNumber": "22AAAAA0000A1Z5",
+      "cidNumber": "U74999DL2016PTC298492",
+      "panNumber": "ABCDE1234F",
+      "phoneNumber": "9876543210",
+      "address": {
+        "street": "123 Craft Lane",
+        "city": "Artisanville",
+        "state": "MH",
+        "zip": "400001",
+        "country": "India"
+      },
+      "productList": "Handmade Jewelry, Custom Paintings, Pottery",
+      "documents": {
+        "companyPan": "company_pan.pdf",
+        "other": "incorporation_cert.pdf"
+      }
+    }
+  },
+  { 
+    "id": "usr_customer", 
+    "name": "John Doe", 
+    "email": "customer@chromacart.com", 
+    "role": "CUSTOMER", 
+    "avatar": "https://i.pravatar.cc/150?u=customer",
+    "password": "password123",
+    "phone": "123-456-7890",
+    "wishlist": ["prod_5", "prod_10"],
+    "addresses": [
+      { "id": "addr_1", "street": "123 Main St", "city": "Anytown", "state": "CA", "zip": "12345", "country": "USA", "isDefault": true },
+      { "id": "addr_2", "street": "456 Oak Ave", "city": "Someville", "state": "NY", "zip": "67890", "country": "USA" }
+    ],
+    "purchasedProductIds": ["prod_2", "prod_7", "prod_9", "prod_6"]
+  }
+]
