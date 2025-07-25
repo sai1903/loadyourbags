@@ -1,6 +1,9 @@
 
 import { supabase } from '../utils/supabase';
 import { Product, User, Category, Order, Address, Review } from '../types';
+import config from '../utils/config';
+import logger from '../utils/logger';
+import { performanceMonitor } from '../utils/performance';
 
 // Enhanced error handling
 class ApiError extends Error {
@@ -41,6 +44,41 @@ async function withRetry<T>(
 }
 
 // Helper function to handle Supabase responses
+function handleSupabaseResponse<T>(data: T, error: any): T {
+  if (error) {
+    logger.error('Supabase API Error', error);
+    throw new ApiError(error.message, error.code, error);
+  }
+  return data;
+}
+
+// Performance monitoring wrapper for API calls
+function withPerformanceMonitoring<T>(
+  operation: () => Promise<T>,
+  operationName: string
+): Promise<T> {
+  return new Promise(async (resolve, reject) => {
+    const startMark = `${operationName}-start`;
+    const endMark = `${operationName}-end`;
+    
+    performanceMonitor.mark(startMark);
+    
+    try {
+      const result = await operation();
+      performanceMonitor.mark(endMark);
+      const duration = performanceMonitor.measure(operationName, startMark, endMark);
+      
+      logger.debug(`API Operation: ${operationName} completed in ${duration}ms`);
+      resolve(result);
+    } catch (error) {
+      performanceMonitor.mark(endMark);
+      const duration = performanceMonitor.measure(operationName, startMark, endMark);
+      
+      logger.error(`API Operation: ${operationName} failed after ${duration}ms`, error);
+      reject(error);
+    }
+  });
+}
 function handleSupabaseResponse<T>(data: T | null, error: any): T {
   if (error) {
     console.error('Supabase error:', error);

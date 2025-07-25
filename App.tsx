@@ -36,6 +36,9 @@ import { useEffect, useState } from 'react';
 import { supabase } from './utils/supabase';
 import ErrorBoundary from './components/ErrorBoundary';
 import LoadingSpinner from './components/LoadingSpinner';
+import OfflineIndicator from './components/OfflineIndicator';
+import { performanceMonitor } from './utils/performance';
+import logger from './utils/logger';
 import './styles/globals.css';
 
 
@@ -104,15 +107,43 @@ function App() {
   const [dbStatus, setDbStatus] = useState<string>('Connecting to Supabase...');
 
   useEffect(() => {
+    // Performance monitoring
+    performanceMonitor.mark('app-start');
+    logger.info('Application starting');
+
     async function testConnection() {
-      const { data, error } = await supabase.from('todos').select().limit(1);
-      if (error) {
-        setDbStatus('Supabase connection failed: ' + error.message);
-      } else {
-        setDbStatus('Supabase connection successful!');
+      try {
+        performanceMonitor.mark('db-connection-start');
+        const { data, error } = await supabase.from('products').select('id').limit(1);
+        performanceMonitor.mark('db-connection-end');
+        
+        const connectionTime = performanceMonitor.measure(
+          'db-connection',
+          'db-connection-start',
+          'db-connection-end'
+        );
+
+        if (error) {
+          setDbStatus('Supabase connection failed: ' + error.message);
+          logger.error('Database connection failed', error);
+        } else {
+          setDbStatus('Supabase connection successful!');
+          logger.info(`Database connected successfully in ${connectionTime}ms`);
+        }
+      } catch (error) {
+        setDbStatus('Connection error occurred');
+        logger.error('Database connection error', error);
       }
     }
+    
     testConnection();
+
+    // Log performance after app loads
+    setTimeout(() => {
+      performanceMonitor.mark('app-ready');
+      const loadTime = performanceMonitor.measure('app-load', 'app-start', 'app-ready');
+      logger.info(`Application loaded in ${loadTime}ms`);
+    }, 1000);
   }, []);
 
   return (
@@ -121,6 +152,7 @@ function App() {
         <CartProvider>
           <HashRouter>
             <div className="flex flex-col min-h-screen font-sans text-slate-800 dark:text-slate-200">
+              <OfflineIndicator />
               <Navbar />
               <main className="flex-grow container-responsive py-4 sm:py-6 lg:py-8">
               <Routes>
